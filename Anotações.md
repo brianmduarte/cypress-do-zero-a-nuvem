@@ -135,4 +135,9 @@ Um bom exemplo pode ser utilizado para uma aplicação que requer autenticação
 });
 ```
 
-    
+.select()
+```javascript
+  cy.get('select').select('Blog') // Seleção pelo texto
+  cy.get('select').select('youtube') // Seleção pelo value
+  cy.get('select').select(1) // Seleção pelo índice 1
+```
