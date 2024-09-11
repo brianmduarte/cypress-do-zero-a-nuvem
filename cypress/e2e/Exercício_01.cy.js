@@ -60,9 +60,9 @@ describe('Central de Atendimento ao Cliente TAT', () => {
         cy.get('#firstName').type('Brian Mucio')
         cy.get('#lastName').type('Duarte')
         cy.get('#email').type('braianmucioduarte@gmail.com')
-        cy.get('#product').select('Mentoria')
-        cy.get('input[type="radio"][value="feedback"]').click()
-        cy.get('input[type="checkbox"][value="phone"]').click()
+        cy.get('#product').select('YouTube')
+        cy.get('input[type="radio"][value="feedback"]').check().should('be.checked')
+        cy.get('input[type="checkbox"][value="phone"]').check()
         cy.get('#open-text-area').type('Um texto muito longo aqui!', {delay: 10})
         cy.get('button[type="submit"]').click()
 
@@ -90,10 +90,31 @@ describe('Central de Atendimento ao Cliente TAT', () => {
         cy.get('.error').should('be.visible')
     })
 
-    it.only('CT08 - Envia formulário de sucesso utilizando comando customizado', () =>{
+    it('CT08 - Envia formulário de sucesso utilizando comando customizado', () =>{
         cy.fillMandatoryFieldsAndSubmit()
 
         cy.get('.success').should('be.visible')
     })
-})
 
+    it('CT09 - Validando todas as opções de seleção do tipo radio', () =>{
+        cy.get('input[type="radio"]')
+        .each(TypeOfServices =>{
+            cy.wrap(TypeOfServices)
+            .check()
+            .should('be.checked')
+        })
+    })
+    
+
+    it('CT10 - Marcando e desmarcando checkboxes', () => {
+        cy.get('#check input[type="checkbox"]')
+        .check()
+        .should('be.checked')
+        .first()
+        .uncheck()
+        .should('not.be.checked')
+        
+    })
+    
+
+})

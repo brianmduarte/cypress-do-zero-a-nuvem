@@ -137,7 +137,21 @@ Um bom exemplo pode ser utilizado para uma aplicação que requer autenticação
 
 .select()
 ```javascript
-  cy.get('select').select('Blog') // Seleção pelo texto
-  cy.get('select').select('youtube') // Seleção pelo value
-  cy.get('select').select(1) // Seleção pelo índice 1
+  cy.get('input[type="radio"][value="feedback"]').check() // Encadear o .check() permite marcar o radio indicado
 ```
+
+.check() 
+```javascript
+it('CT09 - Validando todas as opções de seleção do tipo radio', () => {
+        cy.get('input[type="radio"]')
+        .each(TypeOfServices => {
+            cy.wrap(TypeOfServices) // o .wrap itera sobre todos os itens disponíveis passíveis de seleção
+            .check()
+            .should('be.checked')
+        })
+})
+```
+Com o .check também é possíveis marcar inputs do tipo Checkbox. Para desmarcá-lo, pode-se utilizar o comando .uncheck()
+
+
+
