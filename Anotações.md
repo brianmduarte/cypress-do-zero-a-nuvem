@@ -154,4 +154,7 @@ it('CT09 - Validando todas as opções de seleção do tipo radio', () => {
 Com o .check também é possíveis marcar inputs do tipo Checkbox. Para desmarcá-lo, pode-se utilizar o comando .uncheck()
 
 
+.selectFile()
+
+- Este comando permite selecionar um arquivo em inputs de upload. Basta encadeá-lo ao comando .get(), por exemplo, e então passar o caminho do arquivo desejado.
 
