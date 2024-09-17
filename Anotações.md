@@ -158,3 +158,32 @@ Com o .check também é possíveis marcar inputs do tipo Checkbox. Para desmarc�
 
 - Este comando permite selecionar um arquivo em inputs de upload. Basta encadeá-lo ao comando .get(), por exemplo, e então passar o caminho do arquivo desejado.
 
+Exemplo de estrutura do comando .selectFile():
+```javascript
+  cy.get('input[type="file"]').selectFile('caminho do arquivo no código')
+```
+
+Exemplo prático de seleção de arquivo:
+```javascript
+it('Selecionando um arquivo da pasta fixtures', () => {
+        cy.get('input[type="file"]').selectFile('cypress/fixtures/example.json')
+        
+        .should( input => {
+            expect(input[0].files[0].name).to.equal('example.json')
+        })
+    })
+```
+
+Selecionando um arquivo utilizando a action drag-and-drop:
+```javascript
+it('Selecionando arquivo e simulando um drag-and-drop', () => {
+        
+        cy.get('input[type="file"]').selectFile('cypress/fixtures/example.json', { action: 'drag-drop'})
+        .should( input => {
+            expect(input[0].files[0].name).to.equal('example.json')
+        })
+    })
+```
+
+A principal diferença em se utilizar o drag-and-drop, é que o Cypress faz uma simulação em que o usuário arrasta o arquivo para o input de seleção.
+

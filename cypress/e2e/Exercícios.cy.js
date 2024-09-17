@@ -116,5 +116,26 @@ describe('Central de Atendimento ao Cliente TAT', () => {
         
     })
     
+    it('CT11 - Selecionando um arquivo da pasta fixtures', () => {
+        
+        cy.get('input[type="file"]').selectFile('cypress/fixtures/example.json')
+        .should( input => {
+            expect(input[0].files[0].name).to.equal('example.json')
+        })
+    })
+
+    it.only('CT12 - Selecionando arquivo e simulando um drag-and-drop', () => {
+        
+        cy.get('input[type="file"]').selectFile('cypress/fixtures/example.json', { action: 'drag-drop'})
+        .should( input => {
+            expect(input[0].files[0].name).to.equal('example.json')
+        })
+    })
+
+    it('CT13 - Selecionando um arquivo utilizando uma fixture para a qual foi dado um alias', () => {
+        cy.get('input[type="file"]').selectFile('cypress/fixtures/example.json')
+        
+        
+    })
 
 })
