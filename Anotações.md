@@ -187,3 +187,21 @@ it('Selecionando arquivo e simulando um drag-and-drop', () => {
 
 A principal diferença em se utilizar o drag-and-drop, é que o Cypress faz uma simulação em que o usuário arrasta o arquivo para o input de seleção.
 
+
+### Lidando com links que abrem outra aba do navegador
+
+1º Possibilidade - olhando para o código, ao invés do browser
+
+Caso um elemento de âncora (<a>) possuir o atributo target com o valor _blank, ao ser clicado, o valor do atributo href será aberto em uma nova aba. Este é o comportamento padrão em qualquer navegador.
+
+Neste caso, podemos verificar tal característica, sem sequer precisar clicar no elemento.
+
+Ex:
+```javascript
+cy.get('.some-link').should('have.attr', 'target', '_blank')
+```
+
+
+2º Possibilidade - removendo o atributo target do elemento
+
+Se você precisar ir para outra página, o Cypress
