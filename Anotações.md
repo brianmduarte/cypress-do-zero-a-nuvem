@@ -204,4 +204,17 @@ cy.get('.some-link').should('have.attr', 'target', '_blank')
 
 2º Possibilidade - removendo o atributo target do elemento
 
-Se você precisar ir para outra página, o Cypress
+Se você precisar ir para outra página, o Cypress permite remover a propriedade target do elemento âncora. Para isso, o comado .invoke() pode ser utilizado.
+
+Para que este comando funcione, espera-se que a nova aba esteja no mesmo domínio (ou subdomínio) da aplicação em teste. Caso contrário, recomenda-se utilizando o comando cy.origin.
+
+
+## Simulando viewport de um dispositivo móvel
+
+O Cypress também permite redimensionar o navegador para simular o uso da aplicação em um dispositivo móvel. 
+
+Através da linha de comando, é possível passar o seguinte comando: 
+```bash
+cypress open --config viewportWidht=370 viewportHeight=660
+```
+
