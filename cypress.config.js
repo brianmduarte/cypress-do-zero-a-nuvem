@@ -7,6 +7,7 @@ module.exports = defineConfig({
   viewportWidth: 1280,
   e2e: {},
   video: true,
+  projectId: "go4hrp",
 });
 
 
