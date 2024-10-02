@@ -218,3 +218,7 @@ Através da linha de comando, é possível passar o seguinte comando:
 cypress open --config viewportWidht=370 viewportHeight=660
 ```
 
+
+
+
+* Demonstrando integração contínua ao Cypress Cloud
